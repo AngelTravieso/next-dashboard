@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 
 export default function HomeHome() {
   // redireccionar
-  redirect("/dashboard/counter");
+  redirect("/dashboard/main");
 
   return (
     <>
