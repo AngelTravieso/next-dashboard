@@ -1,6 +1,6 @@
 'use client' // Error components must be Client Components
  
-import ErrorIcon from '@/app/pokemons/components/ErrorIcon'
+import ErrorIcon from '@/pokemons/components/ErrorIcon'
 import { useEffect } from 'react'
  
 export default function Error({
