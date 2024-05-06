@@ -7,6 +7,28 @@ interface Props {
   params: { id: string };
 }
 
+// gsp (generate static params - snippet)
+
+// ! Solo se ejecuta en build time
+export async function generateStaticParams() {
+  const static151Pokemons = Array.from({ length: 151 }).map(
+    (item, idx) => `${idx + 1}`
+  );
+
+  return static151Pokemons.map((id) => ({
+    id: id,
+  }));
+
+  // return [
+  //   { id: "1" },
+  //   { id: "2" },
+  //   { id: "3" },
+  //   { id: "4" },
+  //   { id: "5" },
+  //   { id: "6" },
+  // ];
+}
+
 // Metadata dinámica
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
@@ -28,9 +50,9 @@ const getPokemon = async (id: string): Promise<Pokemon> => {
   try {
     const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
       // cache: "force-cache", // TODO cambiar esto en un futuro
-      // next: {
-      //   revalidate: 60 * 60 * 30 * 6, // permite expresiones, esto es para revalidar la caché cada cierto tiempo
-      // },
+      next: {
+        revalidate: 60 * 60 * 30 * 6, // permite expresiones, esto es para revalidar la caché cada cierto tiempo
+      },
     }).then((resp) => resp.json());
 
     console.log("Se cargó:", pokemon.name);
