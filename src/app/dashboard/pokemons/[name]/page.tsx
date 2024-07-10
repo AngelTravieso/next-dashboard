@@ -19,8 +19,6 @@ export async function generateStaticParams() {
     name: pokemon.name,
   }));
 
-  console.log();
-
   return static151Pokemons.map(({ name }) => {
     name: name;
   });
